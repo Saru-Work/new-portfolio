@@ -71,7 +71,7 @@ export const PORTFOLIO_DATA = {
       year: "2026",
       status: "STABLE v2.4",
       featured: true,
-      image: "/images/project-aether.jpg",
+      image: "/images/projects/aether_mockup.jpg",
       description: "A browser-native spatial desktop environment featuring glassmorphic windows, WebGL acceleration, and real-time state sync across workspace nodes.",
       problem: "Traditional browser windows are rigid and disconnected, forcing developers into context switching across tab graveyards.",
       solution: "Engineered a spatial canvas windowing engine using Canvas API, Framer Motion inertia, and WebGL shader effects to offer infinite fluid workspace cards.",
@@ -92,7 +92,7 @@ export const PORTFOLIO_DATA = {
       year: "2025",
       status: "PRODUCTION",
       featured: true,
-      image: "/images/project-synapse.jpg",
+      image: "/images/projects/synapse_mockup.jpg",
       description: "Visual node-based agent pipeline designer that compiles multi-step LLM workflows into fault-tolerant distributed async graphs.",
       problem: "Building multi-agent reasoning loops with vector search context retrieval required boilerplate code prone to rate-limiting and state corruption.",
       solution: "Created an interactive DAG execution graph with real-time stream tracing, automatic fallback retry policies, and vector database embeddings.",
@@ -113,7 +113,7 @@ export const PORTFOLIO_DATA = {
       year: "2025",
       status: "ACTIVE",
       featured: true,
-      image: "/images/project-hyperflow.jpg",
+      image: "/images/projects/hyperflow_mockup.jpg",
       description: "High-throughput streaming metrics dashboard with sub-millisecond latency heatmaps and automated anomaly detection.",
       problem: "DevOps teams lack instant visual clarity when tracing distributed microservice latency spikes across global edge nodes.",
       solution: "Architected a WebSockets + Web Workers streaming pipeline with customized canvas chart rendering to visualize 100k events/sec.",
@@ -131,94 +131,124 @@ export const PORTFOLIO_DATA = {
   skills: {
     nodes: [
       {
-        id: "react",
-        name: "React 19 / Next.js",
-        category: "Frontend",
+        id: "javascript",
+        name: "JavaScript (ES6+)",
+        category: "Languages",
         level: 5,
-        x: 48,
-        y: 28,
-        connections: ["ts", "tailwind", "node", "framer"],
-        description: "Server Components, App Router, Concurrent Mode, and Custom Hooks architecture."
+        x: 18,
+        y: 25,
+        connections: ["ts", "react", "node", "express"],
+        description: "Asynchronous Event Loop, Closures, Prototypes, ES Next features, DOM manipulation, performance tuning."
       },
       {
         id: "ts",
         name: "TypeScript",
-        category: "Frontend",
+        category: "Languages",
         level: 5,
-        x: 25,
-        y: 35,
-        connections: ["react", "node", "python"],
-        description: "Strict static typing, generative generics, type algebra, and enterprise AST transformations."
+        x: 34,
+        y: 20,
+        connections: ["javascript", "react", "nextjs", "express"],
+        description: "Strict static typing, generics, utility types, AST transformations, enterprise type safety."
       },
       {
-        id: "tailwind",
-        name: "Tailwind / CSS Math",
+        id: "react",
+        name: "React 19",
         category: "Frontend",
         level: 5,
-        x: 72,
-        y: 32,
-        connections: ["react", "framer"],
-        description: "Custom design systems, CSS variables, glassmorphism, responsive editorial grid layouts."
+        x: 52,
+        y: 22,
+        connections: ["javascript", "ts", "nextjs", "tailwind"],
+        description: "Hooks, Server Components, Concurrent React, state management (Zustand, Redux), custom rendering."
       },
       {
-        id: "framer",
-        name: "Framer Motion / Motion",
+        id: "nextjs",
+        name: "Next.js",
         category: "Frontend",
         level: 5,
-        x: 65,
-        y: 55,
-        connections: ["react", "tailwind"],
-        description: "Scroll physics, layout morphing, spring inertia animations, and gestures."
+        x: 70,
+        y: 20,
+        connections: ["react", "ts", "express", "nginx"],
+        description: "App Router, SSR / SSG / ISR, API routes, Server Actions, middleware, performance optimization."
+      },
+      {
+        id: "express",
+        name: "Express.js",
+        category: "Backend",
+        level: 5,
+        x: 24,
+        y: 54,
+        connections: ["node", "javascript", "postgres", "redis"],
+        description: "RESTful APIs, custom middleware pipelines, authentication (JWT/OAuth), error handling, rate limiting."
       },
       {
         id: "node",
-        name: "Node.js / Express",
+        name: "Node.js",
         category: "Backend",
         level: 5,
-        x: 40,
-        y: 58,
-        connections: ["react", "postgres", "redis", "ts"],
-        description: "Asynchronous microservices, WebSocket streaming, REST API design, performance profiling."
+        x: 42,
+        y: 50,
+        connections: ["express", "javascript", "postgres", "redis", "docker"],
+        description: "Event-driven I/O, WebSockets, Streams, Cluster module, microservices architecture."
       },
       {
         id: "postgres",
-        name: "PostgreSQL / SQL",
-        category: "Systems & DB",
+        name: "PostgreSQL",
+        category: "Backend",
         level: 4,
-        x: 28,
-        y: 75,
-        connections: ["node", "redis"],
-        description: "Query optimization, indexing strategies, ACID transaction management, relational schemas."
+        x: 26,
+        y: 80,
+        connections: ["express", "node", "redis"],
+        description: "Relational schema design, complex joins, indexing, Prisma/Drizzle ORM, query optimization."
       },
       {
         id: "redis",
-        name: "Redis Caching",
-        category: "Systems & DB",
+        name: "Redis",
+        category: "Backend",
         level: 4,
-        x: 52,
+        x: 48,
         y: 78,
-        connections: ["node", "postgres"],
-        description: "In-memory data structures, pub/sub event broadcasting, session management."
-      },
-      {
-        id: "python",
-        name: "Python / AI Tools",
-        category: "AI & Tools",
-        level: 4,
-        x: 18,
-        y: 55,
-        connections: ["ts", "node"],
-        description: "FastAPI, LLM orchestration, PyTorch data transformations, automated agent workflows."
+        connections: ["node", "express", "postgres"],
+        description: "In-memory caching, Pub/Sub messaging, session store, rate-limiting, key-value data structures."
       },
       {
         id: "docker",
-        name: "Docker / CI/CD",
-        category: "Systems & DB",
+        name: "Docker",
+        category: "DevOps & Infra",
         level: 4,
-        x: 78,
-        y: 72,
-        connections: ["node", "postgres"],
-        description: "Containerization, multi-stage builds, GitHub Actions pipelines, Vercel edge deployment."
+        x: 64,
+        y: 52,
+        connections: ["kubernetes", "nginx", "node"],
+        description: "Containerization, multi-stage Dockerfiles, Docker Compose multi-container setups, image minimization."
+      },
+      {
+        id: "kubernetes",
+        name: "Kubernetes",
+        category: "DevOps & Infra",
+        level: 4,
+        x: 82,
+        y: 52,
+        connections: ["docker", "nginx"],
+        description: "Container orchestration, Pods, Deployments, Services, Ingress controllers, auto-scaling."
+      },
+      {
+        id: "nginx",
+        name: "Nginx",
+        category: "DevOps & Infra",
+        level: 4,
+        x: 76,
+        y: 80,
+        connections: ["docker", "kubernetes", "nextjs"],
+        description: "Reverse proxy, load balancing, SSL/TLS termination, static asset caching, HTTP/2 optimization."
+      },
+      {
+        id: "tailwind",
+        name: "Tailwind CSS",
+        category: "Frontend",
+        level: 5,
+        x: 86,
+        y: 25,
+        connections: ["react", "nextjs"],
+        description: "Custom design systems, CSS variables, glassmorphism, responsive grid layouts, animations."
       }
     ] as TechNode[],
     principles: [

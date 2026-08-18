@@ -1,231 +1,355 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { PORTFOLIO_DATA, TechNode } from "@/data/portfolioData";
 import SectionHeader from "../UI/SectionHeader";
-import { Cpu, Zap, Sparkles, Layers, Info } from "lucide-react";
+
+const TECH_LOGOS = [
+  {
+    id: "javascript",
+    name: "JavaScript",
+    version: "ES6+",
+    category: "LANGUAGE",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#F7DF1E]" viewBox="0 0 24 24">
+        <path d="M3 3h18v18H3V3zm10.72 13.97c.48.8 1.16 1.4 2.27 1.4 1.14 0 1.84-.57 1.84-1.39 0-.96-.78-1.31-2.09-1.87l-.72-.31c-2.07-.88-3.44-1.98-3.44-4.34 0-2.48 1.9-4.22 4.8-4.22 2.15 0 3.63.76 4.6 2.45l-1.9 1.22c-.44-.76-1.05-1.12-1.99-1.12-.96 0-1.57.57-1.57 1.26 0 .84.6 1.18 1.9 1.74l.72.31c2.43 1.03 3.66 2.11 3.66 4.5 0 2.87-2.23 4.41-5.38 4.41-2.92 0-4.63-1.35-5.51-3.03l1.9-1.09zM8.32 17.06c.4 1.2 1.34 1.88 2.68 1.88.94 0 1.58-.33 1.58-1.12v-8.79h2.36v8.78c0 2.29-1.56 3.4-3.86 3.4-2.46 0-3.92-1.25-4.57-3.04l1.81-1.11z" />
+      </svg>
+    ),
+  },
+  {
+    id: "typescript",
+    name: "TypeScript",
+    version: "5.4",
+    category: "LANGUAGE",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#3178C6]" viewBox="0 0 24 24">
+        <path d="M3 3h18v18H3V3zm10.73 14.16c.55.9 1.43 1.45 2.64 1.45 1.28 0 2.05-.62 2.05-1.52 0-1.05-.88-1.44-2.35-2.06l-.8-.34c-2.3-.96-3.82-2.16-3.82-4.73 0-2.7 2.1-4.6 5.3-4.6 2.37 0 4.02.83 5.09 2.68l-2.1 1.33c-.48-.83-1.16-1.22-2.2-1.22-1.05 0-1.72.62-1.72 1.38 0 .92.66 1.28 2.09 1.9l.8.34c2.68 1.13 4.06 2.3 4.06 4.9 0 3.12-2.44 4.81-5.9 4.81-3.23 0-5.12-1.47-6.08-3.3l2.06-1.19zM6.16 8.7h6.46v2.15H9.39v9.84H6.94v-9.84H6.16V8.7z" />
+      </svg>
+    ),
+  },
+  {
+    id: "react",
+    name: "React 19",
+    version: "19.0",
+    category: "FRONTEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" strokeWidth="1.8">
+        <circle cx="12" cy="12" r="2.2" fill="#61DAFB" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(0 12 12)" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)" />
+      </svg>
+    ),
+  },
+  {
+    id: "nextjs",
+    name: "Next.js",
+    version: "15.0",
+    category: "FRONTEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#18191B]" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.89 14.5L10.3 8.76v7.74H8.8V7.5h1.68l5.41 7.55V7.5h1.5v9h-1.5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "express",
+    name: "Express.js",
+    version: "4.19",
+    category: "BACKEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#18191B]" viewBox="0 0 24 24">
+        <path d="M4 5h16v2H6v4h12v2H6v4h14v2H4V5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "node",
+    name: "Node.js",
+    version: "20 LTS",
+    category: "BACKEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#5FA04E]" viewBox="0 0 24 24">
+        <path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm-1 15.5l-4.5-2.5v-5L11 12.5v4.5zm2 0v-4.5l4.5-2.5v5L13 17.5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "docker",
+    name: "Docker",
+    version: "26.0",
+    category: "DEVOPS",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#2496ED]" viewBox="0 0 24 24">
+        <path d="M13 10h2v2h-2zm-3 0h2v2h-2zm-3 0h2v2H7zm6-3h2v2h-2zm-3 0h2v2h-2zm-3 0h2v2H7zm6-3h2v2h-2zm9 9.5c-.5.4-1.6.6-2.5.6-2.8 0-4.5-1.4-4.5-3.5 0-.4.1-.8.2-1.2-1.2 0-2.3.4-3.2 1.1-.3-.6-.8-1-1.5-1.2v-.3h10v.3c.7.2 1.2.6 1.5 1.2.9-.7 2-1.1 3.2-1.1 0 .4.1.8.2 1.2 0 2.1-1.7 3.5-4.5 3.5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "kubernetes",
+    name: "Kubernetes",
+    version: "1.30",
+    category: "DEVOPS",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#326CE5]" viewBox="0 0 24 24">
+        <path d="M12 2L3.5 7v10L12 22l8.5-5V7L12 2zm0 2.3l6.5 3.8v7.6L12 19.5 5.5 15.7V8.1L12 4.3z" />
+      </svg>
+    ),
+  },
+  {
+    id: "nginx",
+    name: "Nginx",
+    version: "1.26",
+    category: "DEVOPS",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#009639]" viewBox="0 0 24 24">
+        <path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm4 13.5l-4-6v6H10V8.5l4 6v-6h2v9z" />
+      </svg>
+    ),
+  },
+  {
+    id: "postgres",
+    name: "PostgreSQL",
+    version: "16.2",
+    category: "DATABASE",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#4169E1]" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-4H9v-2h2V8.5h2v2h2v2h-2v4z" />
+      </svg>
+    ),
+  },
+  {
+    id: "redis",
+    name: "Redis",
+    version: "7.2",
+    category: "DATABASE",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#DC382D]" viewBox="0 0 24 24">
+        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l7 3.5-7 3.5-7-3.5 7-3.5zm-7 5.5l6 3v6l-6-3v-6zm14 6l-6 3v-6l6-3v6z" />
+      </svg>
+    ),
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    version: "4.0",
+    category: "FRONTEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#06B6D4]" viewBox="0 0 24 24">
+        <path d="M12 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C13.2 12.4 14.7 14 18 14c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C16.8 7.6 15.3 6 12 6zm-6 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C7.2 18.4 8.7 20 12 20c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C9.8 13.6 8.3 12 6 12z" />
+      </svg>
+    ),
+  },
+];
 
 export default function SkillsConstellation() {
-  const { nodes, principles } = PORTFOLIO_DATA.skills;
+  const { nodes } = PORTFOLIO_DATA.skills;
   const [selectedNode, setSelectedNode] = useState<TechNode | null>(nodes[0]);
-
   const activeNode = selectedNode || nodes[0];
 
-  return (
-    <div className="w-full h-screen min-h-screen bg-[#F1EEE9] text-[#18191B] border-t border-b border-neutral-300 flex flex-col justify-between overflow-hidden">
-      {/* Viewport Pinned Framework (Exact 100vh Height - Zero Overflow) */}
-      <section
-        id="think"
-        className="w-full h-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-between py-6 sm:py-8 overflow-hidden"
-      >
-        {/* Navbar Clearance Header Spacer */}
-        <div className="w-full h-16 sm:h-20 shrink-0 bg-[#F1EEE9]" />
+  // Scroll container reference for scroll-driven movement
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
+  // Track X translations tied STRICTLY to page scrolling
+  const track1X = useTransform(scrollYProgress, [0, 1], ["0%", "-38%"]);
+  const track2X = useTransform(scrollYProgress, [0, 1], ["-38%", "0%"]);
+
+  const marqueeTrack1 = [...TECH_LOGOS, ...TECH_LOGOS, ...TECH_LOGOS];
+  const marqueeTrack2 = [
+    ...TECH_LOGOS.slice().reverse(),
+    ...TECH_LOGOS.slice().reverse(),
+    ...TECH_LOGOS.slice().reverse(),
+  ];
+
+  return (
+    <div
+      ref={sectionRef}
+      className="w-full bg-[#F1EEE9] text-[#18191B] border-t border-b border-neutral-300 py-20 sm:py-32 overflow-hidden select-none"
+    >
+      <section id="think" className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header & Subtitle */}
-        <div className="shrink-0 mb-3 sm:mb-4">
+        <div className="mb-8 sm:mb-12">
           <SectionHeader
             number="04"
             title="THINK / TECH CONSTELLATION"
-            subtitle="Interactive technology topology graph and system architectural principles."
+            subtitle="Mastered technology stack topology graph across core languages, frontend, backend, & DevOps infrastructure."
             inverted={true}
           />
         </div>
 
-        {/* Unified Joined Grid Container (Takes Remaining Viewport Height - #F1EEE9 Warm Cream Aesthetic) */}
-        <div className="flex-1 min-h-0 border border-neutral-300 bg-[#F1EEE9] rounded-none shadow-sm flex flex-col justify-between overflow-hidden">
-          
-          {/* TOP ROW: Topology Graph (8 Cols) + Node Inspector (4 Cols) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-300 flex-1 min-h-0 overflow-hidden">
-            
-            {/* Topology Network Graph Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3 }}
-              className="lg:col-span-8 p-5 sm:p-6 border-b lg:border-b-0 lg:border-r border-neutral-300 flex flex-col justify-between relative bg-[#F1EEE9] overflow-hidden"
-            >
-              <div className="flex items-center justify-between z-10 mb-2">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-neutral-700" />
-                  <span className="text-xs font-mono text-[#18191B] font-bold uppercase tracking-wider">
-                    TOPOLOGY NETWORK GRAPH
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-neutral-600">
-                  SELECT NODE TO INSPECT
-                </span>
-              </div>
+        {/* TOP: Expansive Breathing Interactive Tech Topology Graph with Fluid Spring Animations */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] my-6"
+        >
+          {/* SVG Connection Lines Floating Directly on Light Background */}
+          <svg className="w-full h-full absolute inset-0 overflow-visible">
+            {nodes.map((node) =>
+              node.connections.map((targetId) => {
+                const targetNode = nodes.find((n) => n.id === targetId);
+                if (!targetNode) return null;
+                const isSelected = activeNode.id === node.id || activeNode.id === targetId;
 
-              {/* SVG Canvas Graph */}
-              <div className="relative w-full h-[180px] sm:h-[220px] my-2">
-                <svg className="w-full h-full absolute inset-0 overflow-visible">
-                  {nodes.map((node) =>
-                    node.connections.map((targetId) => {
-                      const targetNode = nodes.find((n) => n.id === targetId);
-                      if (!targetNode) return null;
-                      const isSelected = activeNode.id === node.id || activeNode.id === targetId;
+                return (
+                  <motion.line
+                    key={`${node.id}-${targetId}`}
+                    x1={`${node.x}%`}
+                    y1={`${node.y}%`}
+                    x2={`${targetNode.x}%`}
+                    y2={`${targetNode.y}%`}
+                    stroke={isSelected ? "#18191B" : "#C7C2B8"}
+                    strokeWidth={isSelected ? 2.5 : 1.2}
+                    strokeDasharray={isSelected ? "none" : "4,4"}
+                    animate={isSelected ? { opacity: [0.6, 1, 0.6] } : { opacity: 0.8 }}
+                    transition={{
+                      repeat: isSelected ? Infinity : 0,
+                      duration: 1.5,
+                      ease: "easeInOut",
+                    }}
+                  />
+                );
+              })
+            )}
+          </svg>
 
-                      return (
-                        <line
-                          key={`${node.id}-${targetId}`}
-                          x1={`${node.x}%`}
-                          y1={`${node.y}%`}
-                          x2={`${targetNode.x}%`}
-                          y2={`${targetNode.y}%`}
-                          stroke={isSelected ? "#18191B" : "#C7C2B8"}
-                          strokeWidth={isSelected ? 1.5 : 1}
-                          strokeDasharray={isSelected ? "none" : "2,2"}
-                        />
-                      );
-                    })
-                  )}
-                </svg>
+          {/* Spacious Interactive Animated Tech Nodes */}
+          {nodes.map((node, nodeIdx) => {
+            const isSelected = activeNode.id === node.id;
+            const floatDuration = 4 + (nodeIdx % 4) * 1.2;
 
-                {/* Nodes (Smooth Circular Nodes - rounded-full) */}
-                {nodes.map((node) => {
-                  const isSelected = activeNode.id === node.id;
-
-                  return (
-                    <button
-                      key={node.id}
-                      onClick={() => setSelectedNode(node)}
-                      data-cursor="NODE"
-                      style={{ left: `${node.x}%`, top: `${node.y}%` }}
-                      className="absolute -translate-x-1/2 -translate-y-1/2 group focus:outline-none"
-                    >
-                      <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                          isSelected
-                            ? "bg-[#18191B] border border-black shadow-md"
-                            : "bg-[#E5E1D8] border border-neutral-400 hover:border-neutral-700"
-                        }`}
-                      >
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            isSelected ? "bg-[#F1EEE9]" : "bg-neutral-600"
-                          }`}
-                        />
-                      </div>
-
-                      <div
-                        className={`absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-none text-[9px] font-mono tracking-wider transition-colors pointer-events-none ${
-                          isSelected
-                            ? "bg-[#18191B] text-white font-bold shadow-md"
-                            : "bg-[#F1EEE9] text-neutral-900 border border-neutral-300 shadow-xs"
-                        }`}
-                      >
-                        {node.name}
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="flex items-center justify-between text-[10px] font-mono text-neutral-700 border-t border-neutral-300 pt-3 z-10">
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#18191B]" /> ACTIVE NODE
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-neutral-400" /> CONNECTED NODE
-                  </span>
-                </div>
-                <span className="font-semibold text-neutral-800">{nodes.length} MASTERED NODES</span>
-              </div>
-            </motion.div>
-
-            {/* Node Inspector Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.05 }}
-              className="lg:col-span-4 p-5 sm:p-6 flex flex-col justify-between bg-[#F1EEE9] overflow-hidden"
-            >
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Info className="w-4 h-4 text-neutral-700" />
-                  <span className="text-xs font-mono text-neutral-700 uppercase tracking-wider font-semibold">
-                    NODE INSPECTOR
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-mono font-bold text-[#18191B] mb-1.5">
-                  {activeNode.name}
-                </h3>
-
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-none bg-[#E5E1D8] text-neutral-900 font-semibold">
-                    {activeNode.category}
-                  </span>
-                  <span className="text-xs font-mono text-neutral-600">
-                    LEVEL {activeNode.level}/5
-                  </span>
-                </div>
-
-                <p className="text-xs font-sans text-neutral-800 leading-relaxed mb-6">
-                  {activeNode.description}
-                </p>
-
-                <div className="mb-4">
-                  <h4 className="text-[10px] font-mono text-neutral-600 uppercase mb-2 font-semibold">
-                    CONNECTED NODES
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {activeNode.connections.map((connId) => {
-                      const connNode = nodes.find((n) => n.id === connId);
-                      return (
-                        <button
-                          key={connId}
-                          onClick={() => connNode && setSelectedNode(connNode)}
-                          data-cursor="JUMP"
-                          className="px-2.5 py-1 rounded-none bg-[#E5E1D8] hover:bg-[#DCD7CB] border border-neutral-300 text-[10px] font-mono text-neutral-900 hover:text-black transition-colors font-semibold"
-                        >
-                          {connNode ? connNode.name : connId}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3 rounded-none bg-[#E5E1D8] border border-neutral-300 text-[11px] font-mono text-neutral-800 flex items-center gap-2 font-medium">
-                <Zap className="w-3.5 h-3.5 text-neutral-800 shrink-0" />
-                <span>Active in production benchmarks.</span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* BOTTOM ROW: 3 Engineering Principles (4 Cols each, Compact Padding) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 bg-[#F1EEE9] shrink-0">
-            {principles.map((principle, pIdx) => (
-              <div
-                key={pIdx}
-                className={`p-4 sm:p-5 flex flex-col space-y-2 bg-[#F1EEE9] ${
-                  pIdx < 2 ? "border-b md:border-b-0 md:border-r border-neutral-300" : ""
-                }`}
+            return (
+              <motion.button
+                key={node.id}
+                onClick={() => setSelectedNode(node)}
+                data-cursor="NODE"
+                style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                animate={{
+                  y: [0, -6, 0, 6, 0],
+                }}
+                transition={{
+                  y: {
+                    duration: floatDuration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                whileHover={{ scale: 1.22, transition: { type: "spring", stiffness: 450, damping: 18 } }}
+                whileTap={{ scale: 0.95 }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 group focus:outline-none z-10"
               >
-                <div className="p-2 rounded-none bg-[#E5E1D8] border border-neutral-300 w-fit text-neutral-900">
-                  {pIdx === 0 && <Cpu className="w-4 h-4" />}
-                  {pIdx === 1 && <Layers className="w-4 h-4" />}
-                  {pIdx === 2 && <Zap className="w-4 h-4" />}
+                {/* Active Radar Pulse Ring */}
+                {isSelected && (
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0.8 }}
+                    animate={{ scale: 2.2, opacity: 0 }}
+                    transition={{ repeat: Infinity, duration: 1.8, ease: "easeOut" }}
+                    className="absolute inset-0 rounded-full border-2 border-neutral-900 pointer-events-none"
+                  />
+                )}
+
+                <div
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    isSelected
+                      ? "bg-[#18191B] border-2 border-black shadow-xl scale-110"
+                      : "bg-[#E5E1D8] border border-neutral-400 hover:border-neutral-800 shadow-sm"
+                  }`}
+                >
+                  <div
+                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full transition-colors ${
+                      isSelected ? "bg-[#F1EEE9]" : "bg-neutral-600 group-hover:bg-neutral-900"
+                    }`}
+                  />
                 </div>
 
-                <h4 className="text-sm font-mono font-bold text-[#18191B]">
-                  {principle.title}
-                </h4>
+                <div
+                  className={`absolute top-11 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-none text-xs sm:text-sm font-mono font-bold tracking-wider transition-all pointer-events-none ${
+                    isSelected
+                      ? "bg-[#18191B] text-white shadow-lg scale-105"
+                      : "bg-[#F1EEE9] text-neutral-900 border border-neutral-300 shadow-xs group-hover:border-neutral-600"
+                  }`}
+                >
+                  {node.name}
+                </div>
+              </motion.button>
+            );
+          })}
+        </motion.div>
+      </section>
 
-                <p className="text-xs font-sans text-neutral-700 leading-relaxed">
-                  {principle.desc}
-                </p>
+      {/* BOTTOM: BIGGER Tech Logo Cards Moving STRICTLY ON PAGE SCROLL */}
+      <div className="relative w-full space-y-6 pt-10 mt-8 border-t border-neutral-300/80 overflow-hidden">
+        {/* Left & Right Gradient Edge Fades */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-[#F1EEE9] to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-[#F1EEE9] to-transparent z-20 pointer-events-none" />
+
+        {/* TRACK 01: Moves Leftward ONLY when user scrolls page */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div style={{ x: track1X }} className="flex gap-6 sm:gap-8 shrink-0 pr-6 sm:pr-8">
+            {marqueeTrack1.map((item, idx) => (
+              <div
+                key={`${item.id}-t1-${idx}`}
+                data-cursor="TECH"
+                className="flex items-center gap-4 sm:gap-5 px-6 sm:px-8 py-4 sm:py-5 rounded-none bg-[#E5E1D8] border border-neutral-300 hover:border-neutral-800 transition-all duration-300 hover:scale-105 shadow-sm group"
+              >
+                <div className="shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base sm:text-lg font-mono font-bold text-[#18191B] tracking-tight whitespace-nowrap">
+                      {item.name}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-mono px-2 py-0.5 rounded-none bg-neutral-900/10 text-neutral-800 font-semibold uppercase">
+                      {item.category}
+                    </span>
+                  </div>
+                  <span className="text-xs font-mono text-neutral-500 tracking-wider uppercase">
+                    v{item.version}
+                  </span>
+                </div>
               </div>
             ))}
-          </div>
-
+          </motion.div>
         </div>
-      </section>
+
+        {/* TRACK 02: Moves Rightward ONLY when user scrolls page */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div style={{ x: track2X }} className="flex gap-6 sm:gap-8 shrink-0 pr-6 sm:pr-8">
+            {marqueeTrack2.map((item, idx) => (
+              <div
+                key={`${item.id}-t2-${idx}`}
+                data-cursor="TECH"
+                className="flex items-center gap-4 sm:gap-5 px-6 sm:px-8 py-4 sm:py-5 rounded-none bg-[#E5E1D8] border border-neutral-300 hover:border-neutral-800 transition-all duration-300 hover:scale-105 shadow-sm group"
+              >
+                <div className="shrink-0 group-hover:-rotate-12 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base sm:text-lg font-mono font-bold text-[#18191B] tracking-tight whitespace-nowrap">
+                      {item.name}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-mono px-2 py-0.5 rounded-none bg-neutral-900/10 text-neutral-800 font-semibold uppercase">
+                      {item.category}
+                    </span>
+                  </div>
+                  <span className="text-xs font-mono text-neutral-500 tracking-wider uppercase">
+                    v{item.version}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }

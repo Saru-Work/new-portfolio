@@ -12,7 +12,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     background-color: var(--bg-main);
     color: var(--text-primary);
   }
@@ -21,6 +20,7 @@
     background-color: var(--bg-main);
     color: var(--text-primary);
     overflow-x: clip;
+    overscroll-behavior-y: none;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 

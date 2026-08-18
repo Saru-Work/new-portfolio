@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   subtitle: string;
   align?: "left" | "center";
   inverted?: boolean;
+  titleClassName?: string;
 }
 
 export default function SectionHeader({
@@ -16,6 +17,7 @@ export default function SectionHeader({
   subtitle,
   align = "left",
   inverted = false,
+  titleClassName = "",
 }: SectionHeaderProps) {
   return (
     <motion.div
@@ -40,7 +42,11 @@ export default function SectionHeader({
 
       <h2
         className={`text-3xl sm:text-4xl md:text-5xl font-mono font-bold tracking-tight mb-4 ${
-          inverted ? "text-[#18191B]" : "text-neutral-100"
+          titleClassName
+            ? titleClassName
+            : inverted
+            ? "text-[#18191B]"
+            : "text-neutral-100"
         }`}
       >
         {title}

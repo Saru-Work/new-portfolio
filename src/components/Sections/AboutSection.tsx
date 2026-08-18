@@ -457,7 +457,7 @@ export default function AboutSection() {
                     data-cursor="PROJECTS"
                     className="flex items-center gap-2 px-6 py-3 rounded-none bg-[#1C1D1F] text-[#FAF9F6] font-mono text-xs font-bold tracking-wider hover:bg-black transition-colors"
                   >
-                    <span>SEE FEATURED BUILD PROJECTS</span>
+                    <span>PROJECTS</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>

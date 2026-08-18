@@ -11,10 +11,11 @@ import SkillsConstellation from "@/components/Sections/SkillsConstellation";
 import NowSection from "@/components/Sections/NowSection";
 import ContactSection from "@/components/Sections/ContactSection";
 import Footer from "@/components/Footer/Footer";
-import SmoothScroll from "@/components/UI/SmoothScroll";
+import SmoothScroll, { useLenisScroll } from "@/components/UI/SmoothScroll";
 
-export default function Home() {
+function PortfolioContent() {
   const [activeSection, setActiveSection] = useState<string>("me");
+  const { getLenis } = useLenisScroll();
 
   // Track active section on scroll
   useEffect(() => {
@@ -41,43 +42,63 @@ export default function Home() {
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
+    const lenis = getLenis();
     if (sectionId === "hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.5 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
       return;
     }
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      if (lenis) {
+        lenis.scrollTo(el, { duration: 1.5 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.5 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
+    <main className="relative min-h-screen bg-[#18191B] text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Cyberpunk Boot Sequence Loader */}
+      <BootSequence />
+
+      {/* Interactive Magnetic Custom Cursor */}
+      <CustomCursor />
+
+      {/* Fixed Blur Glass Navigation Bar */}
+      <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
+
+      {/* Portfolio Sections */}
+      <HeroSection onNavigate={() => scrollToSection("me")} />
+      <AboutSection />
+      <ProjectsSection />
+      <SkillsConstellation />
+      <NowSection />
+      <ContactSection />
+
+      {/* Footer */}
+      <Footer onScrollTop={handleScrollTop} />
+    </main>
+  );
+}
+
+export default function Home() {
+  return (
     <SmoothScroll>
-      <main className="relative min-h-screen bg-[#18191B] text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
-        {/* Cyberpunk Boot Sequence Loader */}
-        <BootSequence />
-
-        {/* Interactive Magnetic Custom Cursor */}
-        <CustomCursor />
-
-        {/* Fixed Blur Glass Navigation Bar */}
-        <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
-
-        {/* Portfolio Sections */}
-        <HeroSection onNavigate={scrollToSection} />
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsConstellation />
-        <NowSection />
-        <ContactSection />
-
-        {/* Footer */}
-        <Footer onScrollTop={handleScrollTop} />
-      </main>
+      <PortfolioContent />
     </SmoothScroll>
   );
 }
