@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-
 import {
   Terminal,
   ArrowUpRight,
-  ChevronRight,
   Code2,
   Database,
   Sparkles,
@@ -276,13 +275,20 @@ function SingleExpertiseCard({
           </p>
         </div>
 
-        {/* Bottom Footer Row: Date (Left), Subtitle (Center), Read article › (Right) */}
-        <div className="flex items-center justify-between font-sans text-xs sm:text-sm pt-4 shrink-0 border-0 mt-auto">
-          <span className="font-bold text-[#2B2927]">{category.date}</span>
-          <span className="font-bold text-[#7D766C]">{category.title}</span>
-          <div className="flex items-center gap-1 font-medium text-[#2B2927] hover:opacity-70 transition-opacity cursor-pointer">
-            <span>Read article</span>
-            <ChevronRight className="w-4 h-4" />
+        {/* Bottom Technology Badges Row */}
+        <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs pt-4 shrink-0 border-t border-[#2B2927]/10 mt-auto">
+          <span className="font-bold tracking-wider text-[#2B2927] text-[10px] sm:text-xs uppercase">
+            [{category.tag}]
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {category.technologies.map((tech) => (
+              <span
+                key={tech.name}
+                className="px-2 py-0.5 text-[9px] sm:text-[10px] font-mono font-bold uppercase bg-[#2B2927]/10 text-[#2B2927] rounded-none"
+              >
+                {tech.name}
+              </span>
+            ))}
           </div>
         </div>
       </div>

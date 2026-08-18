@@ -71,7 +71,7 @@ export const PORTFOLIO_DATA = {
       year: "2025",
       status: "PRODUCTION",
       featured: true,
-      image: "/images/projects/telemetry.jpg",
+      image: "/images/projects/xmusic.png",
       description: "A comprehensive music streaming web application engineered across frontend, backend, and database layers, featuring low-latency audio playback, user playlists, and query optimization.",
       problem: "Music listeners require a responsive web streaming interface capable of instant playback controls, custom playlist creation, and seamless audio state persistence.",
       solution: "Engineered a full-stack architecture utilizing React and Next.js for the user interface, Node.js & Express.js for backend REST APIs, and database storage across MySQL & MongoDB.",
@@ -92,7 +92,7 @@ export const PORTFOLIO_DATA = {
       year: "2025",
       status: "LIVE",
       featured: true,
-      image: "/images/projects/agentos.jpg",
+      image: "/images/projects/lifeline.png",
       description: "An interactive story writing and publishing platform empowering creators to write, edit, and publish stories with real-time database synchronization and reader engagement feeds.",
       problem: "Writers lack a clean, distractor-free web editor with instant cloud persistence, author profiles, and real-time reader interaction.",
       solution: "Built a modern web application leveraging React and Firebase Cloud Firestore for real-time document synchronization, user authentication, and story feeds.",
@@ -327,9 +327,9 @@ export const PORTFOLIO_DATA = {
   },
 
   contact: {
-    email: "saruhasan.dev@gmail.com",
-    github: "https://github.com/saruhasan",
-    linkedin: "https://linkedin.com/in/saruhasan",
-    twitter: "https://x.com/saruhasan_dev"
+    email: "saruatwork@gmail.com",
+    github: "https://github.com/Saru-Work",
+    linkedin: "www.linkedin.com/in/saruhasan-thavachelvan",
+    twitter: "https://x.com/Saruhasan270669"
   }
 };

@@ -244,7 +244,7 @@ export default function SkillsConstellation() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: isSelected ? 1 : 0.8 }}
                     viewport={{ once: true, margin: "-60px" }}
-                    animate={isSelected ? { opacity: [0.6, 1, 0.6] } : {}}
+                    animate={isSelected ? { opacity: [0.6, 1, 0.6] } : { opacity: 0.8 }}
                     transition={{
                       opacity: {
                         duration: isSelected ? 1.5 : 0.8,
