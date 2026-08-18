@@ -8,7 +8,6 @@ import HeroSection from "@/components/Sections/HeroSection";
 import AboutSection from "@/components/Sections/AboutSection";
 import ProjectsSection from "@/components/Sections/ProjectsSection";
 import SkillsConstellation from "@/components/Sections/SkillsConstellation";
-import NowSection from "@/components/Sections/NowSection";
 import ContactSection from "@/components/Sections/ContactSection";
 import Footer from "@/components/Footer/Footer";
 import SmoothScroll, { useLenisScroll } from "@/components/UI/SmoothScroll";
@@ -20,7 +19,7 @@ function PortfolioContent() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "me", "build", "think", "now", "contact"];
+      const sections = ["hero", "me", "build", "think", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -86,7 +85,6 @@ function PortfolioContent() {
       <AboutSection />
       <ProjectsSection />
       <SkillsConstellation />
-      <NowSection />
       <ContactSection />
 
       {/* Footer */}

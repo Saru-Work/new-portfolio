@@ -23,7 +23,6 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
     { id: "me", label: "ME" },
     { id: "build", label: "BUILD" },
     { id: "think", label: "THINK" },
-    { id: "now", label: "NOW" },
   ];
 
   return (

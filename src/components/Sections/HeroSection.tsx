@@ -70,7 +70,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             className="absolute top-0 left-0 w-[66.666667%] h-[58.333333%] border-r border-b border-neutral-800 rounded-none p-6 sm:p-10 lg:p-14 flex items-center justify-center bg-[#18191B] z-10 overflow-hidden"
           >
             <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans tracking-tight text-neutral-100 leading-tight uppercase max-w-xl">
-              SARUHASAN IS A COMPUTER SCIENCE ENGINEER BUILDING SPATIAL WEB SOFTWARE.
+              SARUHASAN THAVACHELVAN IS A FULL-STACK SOFTWARE DEVELOPER.
             </p>
           </motion.div>
 
@@ -84,7 +84,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             className="absolute top-0 right-0 w-[33.333333%] h-[58.333333%] border-b border-neutral-800 rounded-none p-6 sm:p-8 lg:p-12 flex items-center justify-center bg-[#18191B] z-10 overflow-hidden"
           >
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold font-sans tracking-tight text-neutral-400 leading-tight uppercase max-w-md">
-              DRIVEN BY DETERMINISTIC ARCHITECTURE, PHYSICAL DIGITALITY, AND SUB-MILLISECOND PERFORMANCE.
+              COMPUTING &amp; INFORMATION SYSTEMS DEGREE UNDERGRADUATE AT SABARAGAMUWA UNIVERSITY OF SRI LANKA.
             </p>
           </motion.div>
 
@@ -98,7 +98,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             className="absolute bottom-0 left-0 w-[66.666667%] h-[41.666667%] border-r border-neutral-800 rounded-none p-6 sm:p-8 lg:p-12 flex items-center justify-center bg-[#18191B] z-10 overflow-hidden"
           >
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold font-sans tracking-tight text-neutral-400 leading-tight uppercase max-w-md">
-              ARCHITECTING BROWSER-NATIVE SPATIAL OPERATING SYSTEMS AND AUTONOMOUS AI PIPELINES.
+              CREATOR OF XMUSIC (STREAMING), LIFELINE (STORY PLATFORM), AND STHETICS (MOBILE FITNESS).
             </p>
           </motion.div>
 
@@ -124,8 +124,8 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               <span className="px-3 py-1 rounded bg-neutral-800 text-neutral-200 font-mono text-xs uppercase font-bold tracking-widest">
                 01 ME / AUTHOR STATUS
               </span>
-              <span className="text-xs font-mono text-neutral-500">
-                BENGALURU, INDIA (IST UTC+5:30)
+              <span className="text-xs font-mono text-neutral-500 uppercase">
+                SABARAGAMUWA UNIVERSITY OF SRI LANKA
               </span>
             </motion.div>
 
@@ -144,7 +144,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-10 sm:right-10 lg:bottom-14 lg:left-14 lg:right-14 pt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 z-40"
             >
               <p className="text-xs sm:text-sm font-sans text-neutral-400 max-w-md leading-relaxed text-left">
-                Computer Science student &amp; software engineer bridging spatial Web UI craftsmanship with deterministic system architecture.
+                Computing &amp; Information Systems undergraduate at Sabaragamuwa University of Sri Lanka with in-depth knowledge in JavaScript, full-stack web platforms &amp; mobile apps.
               </p>
 
               {onNavigate && (

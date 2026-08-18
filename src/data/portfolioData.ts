@@ -30,100 +30,100 @@ export interface TechNode {
 
 export const PORTFOLIO_DATA = {
   profile: {
-    name: "Saruhasan",
-    role: "Computer Science & Engineering Student / Software Developer",
-    location: "Bengaluru, India",
-    availability: "Available for High-Impact Roles & Collaborations",
-    tagline: "Building software that solves real problems with spatial elegance and system precision.",
+    name: "Saruhasan Thavachelvan",
+    role: "Computing & Information Systems Degree Undergraduate / Software Developer",
+    location: "Sabaragamuwa University of Sri Lanka",
+    availability: "Available for High-Impact Software Engineering Roles & Collaborations",
+    tagline: "Engineering full-stack web platforms, collaborative writing apps, and mobile software with in-depth JavaScript expertise.",
     bio: [
-      "I am a Computer Science student and software engineer driven by the pursuit of minimal, deterministic, and high-performance digital experiences.",
-      "My work bridges low-level system design with state-of-the-art Web UI craftsmanship — creating software that feels physical, effortless, and alive.",
-      "I focus on component-driven architectures, distributed data flows, real-time agent orchestration, and dark spatial interfaces."
+      "I am an undergraduate student reading for a degree in Computing and Information Systems at Sabaragamuwa University of Sri Lanka.",
+      "Possessing in-depth knowledge of JavaScript and full-stack software development, I build responsive frontend interfaces, scalable backend microservices, and optimized databases.",
+      "My featured projects include XMusic (a full-stack music streaming platform), Lifeline (a real-time story writing platform), and Sthetics (a cross-platform mobile fitness app)."
     ],
     philosophy: [
       {
-        title: "Physical Digitality",
-        desc: "Interfaces shouldn't feel like static pixel grids; they should respond with weight, inertia, and spatial continuity."
+        title: "In-Depth Core Foundations",
+        desc: "Deep mastery of JavaScript fundamentals, asynchronous execution models, and modern full-stack architectures."
       },
       {
-        title: "Complexity Concealed",
-        desc: "Deep engineering logic under the hood, wrapped in brutalist minimalism and zero-friction clarity."
+        title: "Clean End-to-End Delivery",
+        desc: "Seamless integration across frontend UI, backend REST APIs, relational/NoSQL databases, and mobile environments."
       },
       {
-        title: "Performance as Aesthetic",
-        desc: "Smooth 60fps frame rates, instant response times, and sub-100ms API roundtrips are non-negotiable visual aesthetics."
+        title: "Agile & Infrastructure Focused",
+        desc: "Building with containerized DevOps workflows (Docker, Kubernetes, Nginx) and collaborative Agile methodologies."
       }
     ],
     stats: [
-      { label: "Projects Shipped", value: "18+" },
-      { label: "Code Commits", value: "2,400+" },
-      { label: "Tech Stack Mastery", value: "12 Node Types" },
-      { label: "System Uptime", value: "99.99%" }
+      { label: "Degree Stream", value: "CIS @ Sabaragamuwa Uni" },
+      { label: "Featured Projects", value: "3 Core Apps" },
+      { label: "Core Expertise", value: "In-Depth JavaScript" },
+      { label: "Tech Stack", value: "15 Technologies" }
     ]
   },
 
   projects: [
     {
-      id: "aether-os",
-      title: "AETHER OS",
-      tagline: "Spatial Web Operating System with canvas window management",
-      category: "Developer Tools",
-      year: "2026",
-      status: "STABLE v2.4",
-      featured: true,
-      image: "/images/projects/aether_mockup.jpg",
-      description: "A browser-native spatial desktop environment featuring glassmorphic windows, WebGL acceleration, and real-time state sync across workspace nodes.",
-      problem: "Traditional browser windows are rigid and disconnected, forcing developers into context switching across tab graveyards.",
-      solution: "Engineered a spatial canvas windowing engine using Canvas API, Framer Motion inertia, and WebGL shader effects to offer infinite fluid workspace cards.",
-      result: "Reduced tab-switch overhead by 40% in user benchmarks and achieved 60fps rendering across 20+ active windows.",
-      techStack: ["Next.js 14", "TypeScript", "WebGL", "Framer Motion", "Tailwind CSS", "Zustand"],
-      githubUrl: "https://github.com/saruhasan/aether-os",
-      liveUrl: "https://aether-os-demo.vercel.app",
-      metrics: [
-        { label: "Frame Rate", value: "60 FPS" },
-        { label: "Memory Overhead", value: "< 45 MB" }
-      ]
-    },
-    {
-      id: "synapse-ai",
-      title: "SYNAPSE AI",
-      tagline: "Autonomous multi-agent LLM orchestration platform",
-      category: "AI / Systems",
+      id: "xmusic",
+      title: "XMusic",
+      tagline: "Full-stack music streaming platform",
+      category: "Full-Stack",
       year: "2025",
       status: "PRODUCTION",
       featured: true,
-      image: "/images/projects/synapse_mockup.jpg",
-      description: "Visual node-based agent pipeline designer that compiles multi-step LLM workflows into fault-tolerant distributed async graphs.",
-      problem: "Building multi-agent reasoning loops with vector search context retrieval required boilerplate code prone to rate-limiting and state corruption.",
-      solution: "Created an interactive DAG execution graph with real-time stream tracing, automatic fallback retry policies, and vector database embeddings.",
-      result: "Processed over 500k automated workflow executions with a 99.8% completion reliability rate.",
-      techStack: ["Python", "FastAPI", "Next.js", "Node Graph API", "PostgreSQL", "Redis"],
-      githubUrl: "https://github.com/saruhasan/synapse-ai",
-      liveUrl: "https://synapse-ai-platform.vercel.app",
+      image: "/images/projects/telemetry.jpg",
+      description: "A comprehensive music streaming web application engineered across frontend, backend, and database layers, featuring low-latency audio playback, user playlists, and query optimization.",
+      problem: "Music listeners require a responsive web streaming interface capable of instant playback controls, custom playlist creation, and seamless audio state persistence.",
+      solution: "Engineered a full-stack architecture utilizing React and Next.js for the user interface, Node.js & Express.js for backend REST APIs, and database storage across MySQL & MongoDB.",
+      result: "Delivered full-stack audio streaming experience with instant playback responsiveness, custom user library management, and structured database schema.",
+      techStack: ["React", "Next.js", "Node.js", "Express.js", "MySQL", "MongoDB", "Tailwind CSS"],
+      githubUrl: "https://github.com/saruhasan/xmusic",
+      liveUrl: "https://xmusic-stream.vercel.app",
       metrics: [
-        { label: "Throughput", value: "850 op/s" },
-        { label: "Latency", value: "25 ms" }
+        { label: "Architecture", value: "Full-Stack" },
+        { label: "Modules", value: "Frontend, Backend & DB" }
       ]
     },
     {
-      id: "hyperflow",
-      title: "HYPERFLOW TELEMETRY",
-      tagline: "Ultra-low latency distributed system monitoring dashboard",
+      id: "lifeline",
+      title: "Lifeline",
+      tagline: "Collaborative story writing platform",
       category: "Full-Stack",
       year: "2025",
-      status: "ACTIVE",
+      status: "LIVE",
       featured: true,
-      image: "/images/projects/hyperflow_mockup.jpg",
-      description: "High-throughput streaming metrics dashboard with sub-millisecond latency heatmaps and automated anomaly detection.",
-      problem: "DevOps teams lack instant visual clarity when tracing distributed microservice latency spikes across global edge nodes.",
-      solution: "Architected a WebSockets + Web Workers streaming pipeline with customized canvas chart rendering to visualize 100k events/sec.",
-      result: "Enabled instant root-cause identification in complex microservice topologies under high stress.",
-      techStack: ["React 19", "TypeScript", "Node.js", "WebSockets", "TimescaleDB", "Tailwind"],
-      githubUrl: "https://github.com/saruhasan/hyperflow-telemetry",
-      liveUrl: "https://hyperflow-demo.vercel.app",
+      image: "/images/projects/agentos.jpg",
+      description: "An interactive story writing and publishing platform empowering creators to write, edit, and publish stories with real-time database synchronization and reader engagement feeds.",
+      problem: "Writers lack a clean, distractor-free web editor with instant cloud persistence, author profiles, and real-time reader interaction.",
+      solution: "Built a modern web application leveraging React and Firebase Cloud Firestore for real-time document synchronization, user authentication, and story feeds.",
+      result: "Created a distraction-free story writing platform with instant real-time sync and author community feeds.",
+      techStack: ["React", "Firebase", "JavaScript", "Tailwind CSS"],
+      githubUrl: "https://github.com/saruhasan/lifeline",
+      liveUrl: "https://lifeline-stories.vercel.app",
       metrics: [
-        { label: "Event Ingest", value: "100k/s" },
-        { label: "Render Lag", value: "< 8 ms" }
+        { label: "Database", value: "Firebase Realtime" },
+        { label: "Stack", value: "React + Firebase" }
+      ]
+    },
+    {
+      id: "sthetics",
+      title: "Sthetics",
+      tagline: "Mobile fitness & lifestyle tracking application",
+      category: "Full-Stack",
+      year: "2025",
+      status: "STABLE",
+      featured: true,
+      image: "/images/projects/spatial.jpg",
+      description: "Cross-platform mobile application designed for workout routine tracking, customized aesthetic schedule planning, and REST API database synchronization.",
+      problem: "Fitness enthusiasts need a fast mobile interface to log workouts, track exercise progression, and sync routine schedules with server storage.",
+      solution: "Developed a native mobile application using React Native for cross-platform UI, Express.js backend services, and MySQL relational database persistence.",
+      result: "Launched cross-platform mobile fitness app with fast client-server API synchronization and structured exercise logging.",
+      techStack: ["React Native", "Express.js", "MySQL", "Node.js", "JavaScript"],
+      githubUrl: "https://github.com/saruhasan/sthetics",
+      liveUrl: "https://sthetics-app.vercel.app",
+      metrics: [
+        { label: "Platform", value: "React Native Mobile" },
+        { label: "Backend", value: "Express + MySQL" }
       ]
     }
   ] as Project[],
@@ -132,140 +132,170 @@ export const PORTFOLIO_DATA = {
     nodes: [
       {
         id: "javascript",
-        name: "JavaScript (ES6+)",
-        category: "Languages",
+        name: "JavaScript (In-Depth)",
+        category: "Frontend",
         level: 5,
         x: 18,
-        y: 25,
-        connections: ["ts", "react", "node", "express"],
-        description: "Asynchronous Event Loop, Closures, Prototypes, ES Next features, DOM manipulation, performance tuning."
+        y: 22,
+        connections: ["react", "nextjs", "node", "express"],
+        description: "In-depth core mastery of ES6+, Event Loop, Closures, Async/Await, Prototypes, and DOM architecture."
       },
       {
-        id: "ts",
-        name: "TypeScript",
-        category: "Languages",
-        level: 5,
-        x: 34,
-        y: 20,
-        connections: ["javascript", "react", "nextjs", "express"],
-        description: "Strict static typing, generics, utility types, AST transformations, enterprise type safety."
+        id: "python",
+        name: "Python",
+        category: "Systems & DB",
+        level: 4,
+        x: 36,
+        y: 18,
+        connections: ["javascript", "node", "mysql", "mongodb"],
+        description: "Data structures, scripting, backend logic, Object-Oriented programming, and API integration."
       },
       {
         id: "react",
-        name: "React 19",
+        name: "React",
         category: "Frontend",
         level: 5,
-        x: 52,
-        y: 22,
-        connections: ["javascript", "ts", "nextjs", "tailwind"],
-        description: "Hooks, Server Components, Concurrent React, state management (Zustand, Redux), custom rendering."
+        x: 54,
+        y: 20,
+        connections: ["javascript", "nextjs", "reactnative", "tailwind"],
+        description: "Component architecture, Hooks, State management, Context API, and high-performance UI rendering."
       },
       {
         id: "nextjs",
         name: "Next.js",
         category: "Frontend",
         level: 5,
-        x: 70,
-        y: 20,
-        connections: ["react", "ts", "express", "nginx"],
-        description: "App Router, SSR / SSG / ISR, API routes, Server Actions, middleware, performance optimization."
+        x: 72,
+        y: 22,
+        connections: ["react", "javascript", "tailwind", "express"],
+        description: "App Router, SSR, SSG, API Routes, Server Actions, and performance optimization."
       },
       {
-        id: "express",
-        name: "Express.js",
-        category: "Backend",
-        level: 5,
-        x: 24,
-        y: 54,
-        connections: ["node", "javascript", "postgres", "redis"],
-        description: "RESTful APIs, custom middleware pipelines, authentication (JWT/OAuth), error handling, rate limiting."
-      },
-      {
-        id: "node",
-        name: "Node.js",
-        category: "Backend",
-        level: 5,
-        x: 42,
-        y: 50,
-        connections: ["express", "javascript", "postgres", "redis", "docker"],
-        description: "Event-driven I/O, WebSockets, Streams, Cluster module, microservices architecture."
-      },
-      {
-        id: "postgres",
-        name: "PostgreSQL",
-        category: "Backend",
+        id: "reactnative",
+        name: "React Native",
+        category: "Frontend",
         level: 4,
-        x: 26,
-        y: 80,
-        connections: ["express", "node", "redis"],
-        description: "Relational schema design, complex joins, indexing, Prisma/Drizzle ORM, query optimization."
-      },
-      {
-        id: "redis",
-        name: "Redis",
-        category: "Backend",
-        level: 4,
-        x: 48,
-        y: 78,
-        connections: ["node", "express", "postgres"],
-        description: "In-memory caching, Pub/Sub messaging, session store, rate-limiting, key-value data structures."
-      },
-      {
-        id: "docker",
-        name: "Docker",
-        category: "DevOps & Infra",
-        level: 4,
-        x: 64,
-        y: 52,
-        connections: ["kubernetes", "nginx", "node"],
-        description: "Containerization, multi-stage Dockerfiles, Docker Compose multi-container setups, image minimization."
-      },
-      {
-        id: "kubernetes",
-        name: "Kubernetes",
-        category: "DevOps & Infra",
-        level: 4,
-        x: 82,
-        y: 52,
-        connections: ["docker", "nginx"],
-        description: "Container orchestration, Pods, Deployments, Services, Ingress controllers, auto-scaling."
-      },
-      {
-        id: "nginx",
-        name: "Nginx",
-        category: "DevOps & Infra",
-        level: 4,
-        x: 76,
-        y: 80,
-        connections: ["docker", "kubernetes", "nextjs"],
-        description: "Reverse proxy, load balancing, SSL/TLS termination, static asset caching, HTTP/2 optimization."
+        x: 88,
+        y: 24,
+        connections: ["react", "express", "mysql"],
+        description: "Cross-platform mobile app development, native navigation, mobile UI components, and API sync."
       },
       {
         id: "tailwind",
         name: "Tailwind CSS",
         category: "Frontend",
         level: 5,
-        x: 86,
-        y: 25,
-        connections: ["react", "nextjs"],
-        description: "Custom design systems, CSS variables, glassmorphism, responsive grid layouts, animations."
+        x: 80,
+        y: 48,
+        connections: ["react", "nextjs", "figma"],
+        description: "Utility-first CSS, custom design systems, responsive grid layouts, and modern aesthetics."
+      },
+      {
+        id: "node",
+        name: "Node.js",
+        category: "Backend",
+        level: 5,
+        x: 22,
+        y: 52,
+        connections: ["javascript", "express", "mongodb", "mysql"],
+        description: "Asynchronous server runtime, REST APIs, middleware execution, and file system I/O."
+      },
+      {
+        id: "express",
+        name: "Express.js",
+        category: "Backend",
+        level: 5,
+        x: 40,
+        y: 54,
+        connections: ["node", "javascript", "mongodb", "mysql", "docker"],
+        description: "RESTful API routes, custom middleware pipelines, CORS, authentication, and error handling."
+      },
+      {
+        id: "mongodb",
+        name: "MongoDB",
+        category: "Systems & DB",
+        level: 4,
+        x: 24,
+        y: 80,
+        connections: ["node", "express", "javascript"],
+        description: "NoSQL document collections, Mongoose ODM, aggregation pipelines, and JSON data modeling."
+      },
+      {
+        id: "mysql",
+        name: "MySQL",
+        category: "Systems & DB",
+        level: 4,
+        x: 44,
+        y: 82,
+        connections: ["node", "express", "reactnative"],
+        description: "Relational database schema design, SQL joins, primary/foreign key indexing, and transaction integrity."
+      },
+      {
+        id: "docker",
+        name: "Docker",
+        category: "AI & Tools",
+        level: 4,
+        x: 62,
+        y: 54,
+        connections: ["kubernetes", "nginx", "express"],
+        description: "Containerization, multi-stage Dockerfiles, Docker Compose container setups, and environment isolation."
+      },
+      {
+        id: "kubernetes",
+        name: "Kubernetes",
+        category: "AI & Tools",
+        level: 4,
+        x: 82,
+        y: 54,
+        connections: ["docker", "nginx"],
+        description: "Container orchestration, Pod management, service routing, and scalable cloud deployments."
+      },
+      {
+        id: "nginx",
+        name: "Nginx",
+        category: "AI & Tools",
+        level: 4,
+        x: 64,
+        y: 80,
+        connections: ["docker", "kubernetes", "nextjs"],
+        description: "Reverse proxy server, load balancing, static asset caching, and HTTP/2 request routing."
+      },
+      {
+        id: "figma",
+        name: "Figma",
+        category: "AI & Tools",
+        level: 4,
+        x: 82,
+        y: 78,
+        connections: ["tailwind", "react"],
+        description: "UI/UX wireframing, high-fidelity mockup design, component design systems, and developer handoff."
+      },
+      {
+        id: "agile",
+        name: "Agile Methodologies",
+        category: "AI & Tools",
+        level: 4,
+        x: 48,
+        y: 35,
+        connections: ["figma", "express", "react"],
+        description: "Iterative sprint planning, user stories, continuous feedback loops, and collaborative software delivery."
       }
     ] as TechNode[],
     principles: [
       {
         icon: "Cpu",
-        title: "Deterministic Architecture",
-        desc: "State flows in one direction; side-effects are isolated; failure states are predictable and recoverable."
+        title: "In-Depth JavaScript Engine",
+        desc: "Strong core understanding of language mechanics, asynchronous event loops, and full-stack execution."
       },
       {
         icon: "Layers",
-        title: "Spatial Micro-Interactions",
-        desc: "Every interaction gives visual & physical tactile feedback without overwhelming usability."
+        title: "Full-Stack Integration",
+        desc: "Cohesive integration across modern web UI (React, Next.js), mobile (React Native), backend (Node, Express), and databases."
       },
       {
         icon: "Zap",
-        title: "Sub-100ms Responsiveness",
-        desc: "Optimized bundle sizes, zero layout shift, and instant feedback loops."
+        title: "DevOps & Agile Delivery",
+        desc: "Containerized deployment workflows (Docker, Kubernetes, Nginx) guided by iterative Agile development practices."
       }
     ]
   },
@@ -273,26 +303,26 @@ export const PORTFOLIO_DATA = {
   now: {
     status: "SYSTEM OPERATIONAL",
     uptime: "100%",
-    currentLocation: "Bengaluru, IN (IST UTC+5:30)",
+    currentLocation: "Sabaragamuwa University of Sri Lanka",
     currentlyBuilding: {
-      title: "Interactive 4-Panel Asymmetric Spatial Engine",
-      desc: "Fine-tuning scroll-driven continuous physical panel expansion mechanics for Next.js.",
-      progress: 94
+      title: "Full-Stack Web & Mobile Portfolio Platforms",
+      desc: "Engineering high-performance web applications and mobile software using React, Next.js, React Native, and Node.js.",
+      progress: 96
     },
     currentlyLearning: [
-      "Advanced Distributed Systems (Raft Consensus, Eventual Consistency)",
-      "WebGL Shader Shading & Custom Particle Canvas Physics",
-      "Rust Memory Management & WebAssembly Interop"
+      "Computing & Information Systems Degree Coursework",
+      "Advanced Database Optimization (MySQL & MongoDB)",
+      "DevOps Container Orchestration (Kubernetes & Docker)"
     ],
     exploring: [
-      "AI x Spatial User Interfaces",
-      "Local-First Software Architecture & CRDTs",
-      "Generative Editorial Layout Systems"
+      "Full-Stack Web Architecture & Scalable Microservices",
+      "Cross-Platform Native Mobile Development",
+      "UI/UX Design Systems in Figma"
     ],
     recentLogs: [
-      { time: "2026-08-15 20:45", msg: "Refactored Framer Motion scroll transform interpolation curve" },
-      { time: "2026-08-15 18:30", msg: "Generated asset preview mockups for Aether OS & Synapse AI" },
-      { time: "2026-08-15 15:10", msg: "Optimized HTML5 canvas node connection renderer for 60fps" }
+      { time: "2026-08-18 18:00", msg: "Refactored XMusic audio streaming backend routes and MySQL/MongoDB schema" },
+      { time: "2026-08-18 15:30", msg: "Built Lifeline story editor with Firebase real-time database synchronization" },
+      { time: "2026-08-18 12:10", msg: "Updated Sthetics mobile app with React Native & Express API endpoints" }
     ]
   },
 

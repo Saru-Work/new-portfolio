@@ -448,7 +448,7 @@ export default function AboutSection() {
                 </h2>
 
                 <p className="text-sm sm:text-lg font-sans text-neutral-700 leading-relaxed max-w-2xl border-l-2 border-neutral-300 pl-5 py-1">
-                  I build modern digital products across frontend, backend, interaction and infrastructure — turning ideas into experiences that are functional, fast and intentional.
+                  Computing &amp; Information Systems undergraduate at Sabaragamuwa University of Sri Lanka with in-depth knowledge of JavaScript, engineering web streaming platforms (XMusic), story apps (Lifeline), and mobile software (Sthetics).
                 </p>
 
                 <div className="pt-3 flex items-center gap-4">

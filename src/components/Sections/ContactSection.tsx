@@ -60,7 +60,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="lg:col-span-5 p-8 sm:p-10 rounded-2xl bg-neutral-900/60 border border-neutral-800 flex flex-col justify-between space-y-8"
+          className="lg:col-span-5 p-8 sm:p-10 rounded-none bg-neutral-900/60 border border-neutral-800 flex flex-col justify-between space-y-8"
         >
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -79,9 +79,9 @@ export default function ContactSection() {
             </p>
 
             {/* Email Copy Box */}
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-between gap-3 mb-8">
+            <div className="p-4 rounded-none bg-neutral-950 border border-neutral-800 flex items-center justify-between gap-3 mb-8">
               <div className="flex items-center gap-3 overflow-hidden">
-                <div className="p-2 rounded-lg bg-neutral-900 text-neutral-300 shrink-0">
+                <div className="p-2 rounded-none bg-neutral-900 text-neutral-300 shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="text-xs font-mono text-neutral-300 truncate">
@@ -92,7 +92,7 @@ export default function ContactSection() {
               <button
                 onClick={handleCopyEmail}
                 data-cursor="COPY"
-                className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 font-mono text-xs flex items-center gap-1.5 transition-colors shrink-0"
+                className="px-3.5 py-1.5 rounded-none bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 font-mono text-xs flex items-center gap-1.5 transition-colors shrink-0"
               >
                 {copied ? (
                   <>
@@ -121,7 +121,7 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="GITHUB"
-                className="p-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
+                className="p-3.5 rounded-none bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
               >
                 <Github className="w-4 h-4 text-neutral-400 group-hover:text-white" />
                 <span className="text-[10px] font-mono text-neutral-400 group-hover:text-white">
@@ -134,7 +134,7 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="LINKEDIN"
-                className="p-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
+                className="p-3.5 rounded-none bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
               >
                 <Linkedin className="w-4 h-4 text-neutral-400 group-hover:text-white" />
                 <span className="text-[10px] font-mono text-neutral-400 group-hover:text-white">
@@ -147,7 +147,7 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="TWITTER"
-                className="p-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
+                className="p-3.5 rounded-none bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex flex-col items-center gap-2 transition-colors group"
               >
                 <Twitter className="w-4 h-4 text-neutral-400 group-hover:text-white" />
                 <span className="text-[10px] font-mono text-neutral-400 group-hover:text-white">
@@ -164,7 +164,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="lg:col-span-7 p-8 sm:p-10 rounded-2xl bg-neutral-900/60 border border-neutral-800"
+          className="lg:col-span-7 p-8 sm:p-10 rounded-none bg-neutral-900/60 border border-neutral-800"
         >
           <div className="flex items-center gap-2 mb-8">
             <MessageSquare className="w-4 h-4 text-neutral-400" />
@@ -179,7 +179,7 @@ export default function ContactSection() {
               animate={{ opacity: 1, scale: 1 }}
               className="py-16 flex flex-col items-center text-center space-y-4"
             >
-              <div className="w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-100 mb-2">
+              <div className="w-12 h-12 rounded-none bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-100 mb-2">
                 <Check className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-mono font-bold text-neutral-100">
@@ -204,7 +204,7 @@ export default function ContactSection() {
                       setFormState({ ...formState, name: e.target.value })
                     }
                     placeholder="e.g. Alex Mercer"
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors"
+                    className="w-full px-4 py-3 rounded-none bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors"
                   />
                 </div>
 
@@ -220,7 +220,7 @@ export default function ContactSection() {
                       setFormState({ ...formState, email: e.target.value })
                     }
                     placeholder="alex@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors"
+                    className="w-full px-4 py-3 rounded-none bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors"
                   />
                 </div>
               </div>
@@ -237,14 +237,14 @@ export default function ContactSection() {
                     setFormState({ ...formState, message: e.target.value })
                   }
                   placeholder="Describe your project, role, or collaboration idea..."
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-none bg-neutral-950 border border-neutral-800 focus:border-neutral-600 focus:outline-none text-xs font-sans text-white placeholder-neutral-600 transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 data-cursor="TRANSMIT"
-                className="w-full py-3.5 rounded-xl bg-neutral-100 text-neutral-950 font-mono text-xs font-bold tracking-wider flex items-center justify-center gap-2 hover:bg-white transition-colors"
+                className="w-full py-3.5 rounded-none bg-neutral-100 text-neutral-950 font-mono text-xs font-bold tracking-wider flex items-center justify-center gap-2 hover:bg-white transition-colors"
               >
                 <Send className="w-4 h-4" />
                 <span>TRANSMIT MESSAGE</span>

@@ -9,7 +9,7 @@ const TECH_LOGOS = [
   {
     id: "javascript",
     name: "JavaScript",
-    version: "ES6+",
+    version: "IN-DEPTH",
     category: "LANGUAGE",
     icon: (
       <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#F7DF1E]" viewBox="0 0 24 24">
@@ -18,19 +18,19 @@ const TECH_LOGOS = [
     ),
   },
   {
-    id: "typescript",
-    name: "TypeScript",
-    version: "5.4",
+    id: "python",
+    name: "Python",
+    version: "3.12",
     category: "LANGUAGE",
     icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#3178C6]" viewBox="0 0 24 24">
-        <path d="M3 3h18v18H3V3zm10.73 14.16c.55.9 1.43 1.45 2.64 1.45 1.28 0 2.05-.62 2.05-1.52 0-1.05-.88-1.44-2.35-2.06l-.8-.34c-2.3-.96-3.82-2.16-3.82-4.73 0-2.7 2.1-4.6 5.3-4.6 2.37 0 4.02.83 5.09 2.68l-2.1 1.33c-.48-.83-1.16-1.22-2.2-1.22-1.05 0-1.72.62-1.72 1.38 0 .92.66 1.28 2.09 1.9l.8.34c2.68 1.13 4.06 2.3 4.06 4.9 0 3.12-2.44 4.81-5.9 4.81-3.23 0-5.12-1.47-6.08-3.3l2.06-1.19zM6.16 8.7h6.46v2.15H9.39v9.84H6.94v-9.84H6.16V8.7z" />
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#3776AB]" viewBox="0 0 24 24">
+        <path d="M12 2c-4.4 0-4.7.2-4.7 2.2V6h9.4v.7H6.3C4.2 6.7 4 7 4 11.4c0 4.3.2 4.6 2.3 4.6h1.4v-2.2c0-2.4 2.1-4.5 4.5-4.5h4.5c.2 0 .4-.2.4-.4V6.7C17.1 2.4 16.7 2 12 2zm-2.2 2.2c.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1zM12 22c4.4 0 4.7-.2 4.7-2.2V18H7.3v-.7h10.4c2.1 0 2.3-.3 2.3-4.7 0-4.3-.2-4.6-2.3-4.6h-1.4v2.2c0 2.4-2.1 4.5-4.5 4.5H7.3c-.2 0-.4.2-.4.4v2.5C6.9 21.6 7.3 22 12 22zm2.2-2.2c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1 0 .6-.5 1.1-1.1 1.1z" />
       </svg>
     ),
   },
   {
     id: "react",
-    name: "React 19",
+    name: "React",
     version: "19.0",
     category: "FRONTEND",
     icon: (
@@ -50,6 +50,28 @@ const TECH_LOGOS = [
     icon: (
       <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#18191B]" viewBox="0 0 24 24">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.89 14.5L10.3 8.76v7.74H8.8V7.5h1.68l5.41 7.55V7.5h1.5v9h-1.5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "reactnative",
+    name: "React Native",
+    version: "MOBILE",
+    category: "MOBILE",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#61DAFB]" viewBox="0 0 24 24">
+        <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14zm-5-1c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+      </svg>
+    ),
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    version: "4.0",
+    category: "FRONTEND",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#06B6D4]" viewBox="0 0 24 24">
+        <path d="M12 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C13.2 12.4 14.7 14 18 14c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C16.8 7.6 15.3 6 12 6zm-6 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C7.2 18.4 8.7 20 12 20c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C9.8 13.6 8.3 12 6 12z" />
       </svg>
     ),
   },
@@ -109,35 +131,46 @@ const TECH_LOGOS = [
     ),
   },
   {
-    id: "postgres",
-    name: "PostgreSQL",
-    version: "16.2",
+    id: "mongodb",
+    name: "MongoDB",
+    version: "7.0",
     category: "DATABASE",
     icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#4169E1]" viewBox="0 0 24 24">
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#47A248]" viewBox="0 0 24 24">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-4H9v-2h2V8.5h2v2h2v2h-2v4z" />
       </svg>
     ),
   },
   {
-    id: "redis",
-    name: "Redis",
-    version: "7.2",
+    id: "mysql",
+    name: "MySQL",
+    version: "8.0",
     category: "DATABASE",
     icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#DC382D]" viewBox="0 0 24 24">
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#4479A1]" viewBox="0 0 24 24">
         <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l7 3.5-7 3.5-7-3.5 7-3.5zm-7 5.5l6 3v6l-6-3v-6zm14 6l-6 3v-6l6-3v6z" />
       </svg>
     ),
   },
   {
-    id: "tailwind",
-    name: "Tailwind CSS",
-    version: "4.0",
-    category: "FRONTEND",
+    id: "figma",
+    name: "Figma",
+    version: "DESIGN",
+    category: "DESIGN",
     icon: (
-      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#06B6D4]" viewBox="0 0 24 24">
-        <path d="M12 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C13.2 12.4 14.7 14 18 14c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C16.8 7.6 15.3 6 12 6zm-6 6c-3.3 0-5.5 1.7-6.6 5 1.1-1.7 2.5-2.2 4.1-1.7 1 0.3 1.7 1.1 2.5 1.9C7.2 18.4 8.7 20 12 20c3.3 0 5.5-1.7 6.6-5-1.1 1.7-2.5 2.2-4.1 1.7-1-0.3-1.7-1.1-2.5-1.9C9.8 13.6 8.3 12 6 12z" />
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#F24E1E]" viewBox="0 0 24 24">
+        <path d="M8 12c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm8-8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm-8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 8c-2.2 0-4-1.8-4-4s1.8-4 4-4h4v4c0 2.2-1.8 4-4 4zm8-8c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" />
+      </svg>
+    ),
+  },
+  {
+    id: "agile",
+    name: "Agile Methodologies",
+    version: "SPRINT",
+    category: "PROCESS",
+    icon: (
+      <svg className="w-7 h-7 sm:w-9 sm:h-9 fill-[#18191B]" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
     ),
   },
@@ -182,12 +215,12 @@ export default function SkillsConstellation() {
           />
         </div>
 
-        {/* TOP: Expansive Breathing Interactive Tech Topology Graph with Fluid Spring Animations */}
+        {/* TOP: Expansive Breathing Interactive Tech Topology Graph with Staggered Viewport Entry */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 40, scale: 0.96, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] my-6"
         >
           {/* SVG Connection Lines Floating Directly on Light Background */}
@@ -208,11 +241,16 @@ export default function SkillsConstellation() {
                     stroke={isSelected ? "#18191B" : "#C7C2B8"}
                     strokeWidth={isSelected ? 2.5 : 1.2}
                     strokeDasharray={isSelected ? "none" : "4,4"}
-                    animate={isSelected ? { opacity: [0.6, 1, 0.6] } : { opacity: 0.8 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: isSelected ? 1 : 0.8 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    animate={isSelected ? { opacity: [0.6, 1, 0.6] } : {}}
                     transition={{
-                      repeat: isSelected ? Infinity : 0,
-                      duration: 1.5,
-                      ease: "easeInOut",
+                      opacity: {
+                        duration: isSelected ? 1.5 : 0.8,
+                        repeat: isSelected ? Infinity : 0,
+                        delay: 0.1,
+                      },
                     }}
                   />
                 );
@@ -220,7 +258,7 @@ export default function SkillsConstellation() {
             )}
           </svg>
 
-          {/* Spacious Interactive Animated Tech Nodes */}
+          {/* Spacious Staggered Viewport Entry Tech Nodes */}
           {nodes.map((node, nodeIdx) => {
             const isSelected = activeNode.id === node.id;
             const floatDuration = 4 + (nodeIdx % 4) * 1.2;
@@ -231,14 +269,20 @@ export default function SkillsConstellation() {
                 onClick={() => setSelectedNode(node)}
                 data-cursor="NODE"
                 style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                initial={{ scale: 0, opacity: 0, y: 30 }}
+                whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
                 animate={{
                   y: [0, -6, 0, 6, 0],
                 }}
                 transition={{
+                  scale: { type: "spring", stiffness: 350, damping: 18, delay: 0.15 + nodeIdx * 0.04 },
+                  opacity: { duration: 0.5, delay: 0.15 + nodeIdx * 0.04 },
                   y: {
                     duration: floatDuration,
                     repeat: Infinity,
                     ease: "easeInOut",
+                    delay: 0.2 + nodeIdx * 0.04,
                   },
                 }}
                 whileHover={{ scale: 1.22, transition: { type: "spring", stiffness: 450, damping: 18 } }}
@@ -284,8 +328,14 @@ export default function SkillsConstellation() {
         </motion.div>
       </section>
 
-      {/* BOTTOM: BIGGER Tech Logo Cards Moving STRICTLY ON PAGE SCROLL */}
-      <div className="relative w-full space-y-6 pt-10 mt-8 border-t border-neutral-300/80 overflow-hidden">
+      {/* BOTTOM: BIGGER Tech Logo Cards Moving STRICTLY ON PAGE SCROLL with Viewport Entry */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full space-y-6 pt-10 mt-8 border-t border-neutral-300/80 overflow-hidden"
+      >
         {/* Left & Right Gradient Edge Fades */}
         <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-[#F1EEE9] to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-[#F1EEE9] to-transparent z-20 pointer-events-none" />
@@ -349,7 +399,7 @@ export default function SkillsConstellation() {
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
