@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
 import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const PROJECT_LETTERS = ["P", "R", "O", "J", "E", "C", "T", "S"];
 
@@ -12,11 +13,13 @@ function DismantlingLetter({
   index,
   totalLetters,
   smoothProgress,
+  isMobile,
 }: {
   letter: string;
   index: number;
   totalLetters: number;
   smoothProgress: MotionValue<number>;
+  isMobile: boolean;
 }) {
   const reverseIndex = totalLetters - 1 - index;
 
@@ -32,11 +35,14 @@ function DismantlingLetter({
   const rEnd = rStart + 0.22; // Return travel to 0vw on left
   const rScaleUp = rEnd + 0.06; // Scales up to 1.0 AFTER arriving
 
+  const targetX = isMobile ? "35vw" : "58vw";
+  const returnP1 = isMobile ? "30vw" : "52vw";
+
   // Horizontal position trajectory
   const x = useTransform(
     smoothProgress,
     [fStart, fP1, fEnd, fScaleUp, rStart, rP1, rEnd, rScaleUp, 1],
-    ["0vw", "6vw", "58vw", "58vw", "58vw", "52vw", "0vw", "0vw", "0vw"]
+    ["0vw", "6vw", targetX, targetX, targetX, returnP1, "0vw", "0vw", "0vw"]
   );
 
   // Scale trajectory: Stays at 0.125 (6px) throughout flight, scales up to 1.0 ONLY AFTER arriving!
@@ -154,6 +160,7 @@ const LIQUID_FLUID_REVEALS = [
 export default function ProjectsSection() {
   const { projects } = PORTFOLIO_DATA;
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -198,6 +205,7 @@ export default function ProjectsSection() {
               index={idx}
               totalLetters={PROJECT_LETTERS.length}
               smoothProgress={smoothProgress}
+              isMobile={isMobile}
             />
           ))}
         </div>

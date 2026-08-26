@@ -349,9 +349,6 @@ export default function SkillsConstellation() {
                 data-cursor="TECH"
                 className="flex items-center gap-4 sm:gap-5 px-6 sm:px-8 py-4 sm:py-5 rounded-none bg-[#E5E1D8] border border-neutral-300 hover:border-neutral-800 transition-all duration-300 hover:scale-105 shadow-sm group"
               >
-                <div className="shrink-0 group-hover:rotate-12 transition-transform duration-300">
-                  {item.icon}
-                </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
                     <span className="text-base sm:text-lg font-mono font-bold text-[#18191B] tracking-tight whitespace-nowrap">
@@ -379,9 +376,6 @@ export default function SkillsConstellation() {
                 data-cursor="TECH"
                 className="flex items-center gap-4 sm:gap-5 px-6 sm:px-8 py-4 sm:py-5 rounded-none bg-[#E5E1D8] border border-neutral-300 hover:border-neutral-800 transition-all duration-300 hover:scale-105 shadow-sm group"
               >
-                <div className="shrink-0 group-hover:-rotate-12 transition-transform duration-300">
-                  {item.icon}
-                </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
                     <span className="text-base sm:text-lg font-mono font-bold text-[#18191B] tracking-tight whitespace-nowrap">

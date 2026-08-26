@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import {
   Terminal,
   ArrowUpRight,
@@ -243,6 +244,7 @@ function SingleExpertiseCard({
   y,
   display,
   zIndex,
+  isMobile,
 }: {
   category: ExpertiseCategory;
   opacity: MotionValue<number>;
@@ -250,15 +252,22 @@ function SingleExpertiseCard({
   y?: MotionValue<number>;
   display: MotionValue<string>;
   zIndex: number;
+  isMobile: boolean;
 }) {
   return (
     <motion.div
-      style={{ opacity, x, y, display, zIndex }}
-      className="absolute top-1/2 -translate-y-1/2 left-[3vw] pointer-events-none w-[49vw] px-0"
+      style={{
+        opacity: isMobile ? 1 : opacity,
+        x: isMobile ? 0 : x,
+        y: isMobile ? 0 : y,
+        display: isMobile ? "flex" : display,
+        zIndex: isMobile ? 'auto' : zIndex,
+      }}
+      className="relative md:absolute md:top-1/2 md:-translate-y-1/2 md:left-[3vw] pointer-events-auto md:pointer-events-none w-full md:w-[49vw] px-0"
     >
-      {/* 49% Viewport Width Wide Editorial Box (Matches Reference Image Exactly) */}
+      {/* Editorial Box */}
       <div
-        className={`pointer-events-auto w-full h-[54vh] max-h-[460px] sm:max-h-[480px] p-6 sm:p-9 md:p-10 rounded-none ${category.bgColor} text-[#2B2927] flex flex-col justify-between shadow-xl shadow-black/10 transition-all duration-300 relative overflow-hidden select-none border-0`}
+        className={`pointer-events-auto w-full h-auto min-h-[320px] md:h-[54vh] md:max-h-[480px] p-8 md:p-10 rounded-none ${category.bgColor} text-[#2B2927] flex flex-col justify-between shadow-xl shadow-black/10 transition-all duration-300 relative overflow-hidden select-none border-0`}
       >
         {/* Top Section: Large ALL CAPS Headline + Top-Right Solid Dark Circle Dot */}
         <div className="flex items-start justify-between gap-6 shrink-0">
@@ -298,6 +307,7 @@ function SingleExpertiseCard({
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -327,14 +337,23 @@ export default function AboutSection() {
   // CARD 01 [BUILD] - PINNED AT left: 3vw (x: 0vw) -> Occupies 3vw to 52vw (3vw Left Margin)
   const card1X = useTransform(smoothProgress, [0.23, 0.85], ["0vw", "0vw"]);
 
-  // CARD 02 [CONNECT] - JOINED AT 49vw (left: 52vw) THEN SLIDES TO 15vw (left: 18vw) -> Occupies 18vw to 67vw
-  const card2X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.85], ["49vw", "49vw", "15vw", "15vw"]);
+  // CARD 02 [CONNECT]
+  const c2Start = isMobile ? "85vw" : "49vw";
+  const c2End = isMobile ? "5vw" : "15vw";
+  const card2X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.85], [c2Start, c2Start, c2End, c2End]);
 
-  // CARD 03 [CREATE] - FOLLOWS CARD 2 (98vw -> 64vw) THEN SLIDES TO 30vw (left: 33vw) -> Occupies 33vw to 82vw
-  const card3X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.60, 0.85], ["98vw", "98vw", "64vw", "30vw", "30vw"]);
+  // CARD 03 [CREATE]
+  const c3Start = isMobile ? "170vw" : "98vw";
+  const c3Mid = isMobile ? "90vw" : "64vw";
+  const c3End = isMobile ? "10vw" : "30vw";
+  const card3X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.60, 0.85], [c3Start, c3Start, c3Mid, c3End, c3End]);
 
-  // CARD 04 [SHIP] - FOLLOWS CARD 3 (147vw -> 113vw -> 79vw) THEN SLIDES TO 45vw (left: 48vw) -> Occupies 48vw to 97vw (3vw Right Margin)
-  const card4X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.60, 0.76, 0.85], ["147vw", "147vw", "113vw", "79vw", "45vw", "45vw"]);
+  // CARD 04 [SHIP]
+  const c4Start = isMobile ? "255vw" : "147vw";
+  const c4Mid1 = isMobile ? "175vw" : "113vw";
+  const c4Mid2 = isMobile ? "95vw" : "79vw";
+  const c4End = isMobile ? "15vw" : "45vw";
+  const card4X = useTransform(smoothProgress, [0.23, 0.28, 0.44, 0.60, 0.76, 0.85], [c4Start, c4Start, c4Mid1, c4Mid2, c4End, c4End]);
 
   const singleCardTransforms = [
     { opacity: cardOpacity, x: card1X, y: cardExitY, display: cardDisplay, zIndex: 30 },
@@ -349,14 +368,14 @@ export default function AboutSection() {
   const phase4Display = useTransform<number, string>(smoothProgress, (v) => (v >= 0.79 ? "flex" : "none"));
 
   return (
-    <div ref={containerRef} className="relative h-[450vh] bg-[#F1EEE9] text-[#1C1D1F]">
-      {/* Sticky Viewport Framework - Exact 100vh Height (Zero Scroll Locks) */}
+    <div ref={containerRef} className="relative h-auto md:h-[450vh] bg-[#F1EEE9] text-[#1C1D1F]">
+      {/* Sticky Viewport Framework - Exact 100vh Height on Desktop */}
       <section
         id="me"
-        className="sticky top-0 w-full h-screen flex flex-col justify-between bg-[#F1EEE9] rounded-none overflow-hidden z-20 border-t border-b border-neutral-300/60"
+        className="relative md:sticky top-0 w-full h-auto md:h-screen flex flex-col justify-between bg-[#F1EEE9] rounded-none md:overflow-hidden z-20 border-t border-b border-neutral-300/60"
       >
-        {/* PHASE 3: SEAMLESSLY JOINED ACCORDION CARD DECK (FULL 100vw VIEWPORT CANVAS) */}
-        <div className="absolute inset-0 pointer-events-none z-25 overflow-hidden">
+        {/* PHASE 3: SEAMLESSLY JOINED ACCORDION CARD DECK */}
+        <div className="relative md:absolute md:inset-0 pointer-events-none z-25 md:overflow-hidden flex flex-col md:block gap-6 px-6 py-12 md:p-0">
           {EXPERTISE_DATA.map((category, index) => {
             const t = singleCardTransforms[index];
             return (
@@ -368,6 +387,7 @@ export default function AboutSection() {
                 y={t.y}
                 display={t.display}
                 zIndex={t.zIndex}
+                isMobile={isMobile}
               />
             );
           })}
@@ -403,10 +423,10 @@ export default function AboutSection() {
             {/* PHASE 1 & 2: LETTER-BY-LETTER REVEAL "WHAT I BUILD" + PILLARS */}
             <motion.div
               style={{
-                opacity: phase1Opacity,
-                display: phase1Display,
+                opacity: isMobile ? 1 : phase1Opacity,
+                display: isMobile ? "flex" : phase1Display,
               }}
-              className="absolute inset-0 flex flex-col justify-center items-start space-y-6 sm:space-y-8 font-mono z-30 w-full"
+              className="relative md:absolute inset-0 flex flex-col justify-center items-start space-y-6 sm:space-y-8 font-mono z-30 w-full pt-16 md:pt-0"
             >
               {/* Headline Row with Vertical Cursor-Following Letter Wave */}
               <HeadlineRow scrollYProgress={smoothProgress} />
@@ -442,11 +462,11 @@ export default function AboutSection() {
             {/* PHASE 4: FINAL STATEMENT ("FROM PIXEL -> PRODUCT") */}
             <motion.div
               style={{
-                opacity: phase4Opacity,
-                y: phase4Y,
-                display: phase4Display,
+                opacity: isMobile ? 1 : phase4Opacity,
+                y: isMobile ? 0 : phase4Y,
+                display: isMobile ? "flex" : phase4Display,
               }}
-              className="absolute inset-0 flex flex-col justify-center items-start z-30 w-full"
+              className="relative md:absolute inset-0 flex flex-col justify-center items-start z-30 w-full py-16 md:py-0"
             >
               <div className="space-y-5 max-w-4xl">
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-mono font-extrabold text-[#1C1D1F] uppercase tracking-tight leading-tight">
